@@ -171,7 +171,7 @@ if 'results' not in st.session_state:
 selected_tickers = st.sidebar.multiselect(
     "Select Tickers:",
     STATIC_TICKERS,
-    default=['GOOGL','GLD', 'AVGO', 'KO', 'WMT', 'AGG','CAT','V','JPM'],
+    default=['GOOGL','GLD', 'AVGO', 'KO', 'WMT','CAT','V','JPM'],
 )
 
 custom_input = st.sidebar.text_input("Comma separated custom tickers (e.g. MOL.BD, OTP.BD):")
