@@ -18,7 +18,7 @@ STATIC_TICKERS = [
     'JPM', 'UNH', 'JNJ', 'XOM', 'AVGO', 'HD', 'PG', 'COST', 'ADBE', 'LLY', 
     'CVX', 'MRK', 'ABBV', 'KO', 'PEP', 'BAC', 'WMT', 'TMO', 'CRM', 'MCD', 
     'ACN', 'CSCO', 'NFLX', 'ORCL', 'ABT', 'DIS', 'DHR', 'INTC', 'VZ', 'TXN', 
-    'AMAT', 'PM', 'PFE', 'LOW', 'UNP', 'SPY', 'QQQ', 'VOO', 'IWM', 'DIA', 'GLD', 'CAT','GE'
+    'AMAT', 'PM', 'PFE', 'LOW', 'UNP', 'SPY', 'QQQ', 'VOO', 'IWM', 'DIA', 'GLD'
 ]
 
 @st.cache_data
@@ -171,7 +171,7 @@ if 'results' not in st.session_state:
 selected_tickers = st.sidebar.multiselect(
     "Select Tickers:",
     STATIC_TICKERS, 
-    default=['BRK-B','GLD','GOOGL', 'CAT', 'GE', 'LLY', 'WMT', 'XOM', 'KO'],
+    default=['JPM','GLD','GOOGL','CVX'],
 )
 
 custom_input = st.sidebar.text_input("Comma separated custom tickers (e.g. MOL.BD, OTP.BD):")
@@ -257,8 +257,8 @@ if st.session_state.results is not None:
         st.info("Visualizing the Modern Portfolio Theory. The red line - calculated via sequential least squares programming - represents portfolios that offer the highest expected return for a defined level of risk. A cloud of potential portfolios was generated with Monte Carlo simulation to demonstrate that the Efficient Frontier provides the optimal reward for every level of risk.")
         fig = go.Figure()
         fig.add_trace(go.Scattergl(x=mc_vols, y=mc_rets, mode='markers', marker=dict(color=mc_sharpes, colorscale='Viridis', size=3, showscale=True, colorbar=dict(title="Sharpe")), name='Simulations', opacity=0.3))
-        fig.add_trace(go.Scattergl(x=eff_vols, y=eff_rets, mode='lines', line=dict(color='red', width=3, dash='dash'), opacity=0.5, name='Efficient Frontier'))
-        fig.add_trace(go.Scattergl(x=[opt_vol_sharpe], y=[opt_ret_sharpe], mode='markers', marker=dict(color='red', size=10, symbol='circle-dot', line=dict(width=1, color='red')), name=f'Max Sharpe Portfolio: {opt_sharpe_ratio:.2f}'))
+        fig.add_trace(go.Scattergl(x=eff_vols, y=eff_rets, mode='lines', line=dict(color='tomato', width=3, dash='dash'), opacity=0.5, name='Efficient Frontier'))
+        fig.add_trace(go.Scattergl(x=[opt_vol_sharpe], y=[opt_ret_sharpe], mode='markers', marker=dict(color='tomato', size=10, symbol='circle-dot', line=dict(width=1, color='tomato')), name=f'Max Sharpe Portfolio: {opt_sharpe_ratio:.2f}'))
         fig.update_layout(xaxis_title="Volatility", yaxis_title="Expected Annual Return", height=600,
                 legend=dict(
                 yanchor="top",
@@ -327,7 +327,7 @@ if st.session_state.results is not None:
         cvar = calculate_cvar(portfolio_daily_ret, 0.95)
         
         fig_bt = go.Figure() # portfolio return
-        fig_bt.add_trace(go.Scattergl(x=cum_ret_portfolio.index, y=cum_ret_portfolio, mode='lines', name='Optimal Portfolio', line=dict(color='red', width=3)))
+        fig_bt.add_trace(go.Scattergl(x=cum_ret_portfolio.index, y=cum_ret_portfolio, mode='lines', name='Optimal Portfolio', line=dict(color='tomato', width=3)))
         
         for ticker in tickers[:3]: # top3 individual asset
              asset_ret = (1 + daily_returns_all[ticker]).cumprod()
@@ -482,7 +482,7 @@ if st.session_state.results is not None:
             
             with col_graph1: # drawdown plot
                 fig_dd = go.Figure()
-                fig_dd.add_trace(go.Scatter(x=drawdown.index, y=drawdown, fill='tozeroy', mode='lines', line=dict(color='red', width=1), name='Drawdown'))
+                fig_dd.add_trace(go.Scatter(x=drawdown.index, y=drawdown, fill='tozeroy', mode='lines', line=dict(color='tomato', width=1), name='Drawdown'))
                 fig_dd.update_layout(yaxis_title="Drawdown %")
                 st.plotly_chart(fig_dd, width="stretch")
                 
@@ -492,12 +492,12 @@ if st.session_state.results is not None:
                 # plotting the regression trendline
                 x_range = np.linspace(min(bench_ret_aligned), max(bench_ret_aligned), 100)
                 y_pred = alpha_daily + beta_val * x_range
-                fig_capm.add_trace(go.Scatter(x=x_range, y=y_pred, mode='lines', name='Trendline', line=dict(color='red')))
+                fig_capm.add_trace(go.Scatter(x=x_range, y=y_pred, mode='lines', name='Trendline', line=dict(color='tomato')))
                 fig_capm.update_layout(title=f"Beta Regression (Beta: {beta_val:.2f})", xaxis_title="SPY", yaxis_title="Portfolio")
                 st.plotly_chart(fig_capm, width="stretch")
 
             fig_roll_s = go.Figure() # rolling sharpe
-            fig_roll_s.add_trace(go.Scatter(x=rolling_sharpe.index, y=rolling_sharpe, mode='lines', name='Rolling Sharpe', line=dict(color='red')))
+            fig_roll_s.add_trace(go.Scatter(x=rolling_sharpe.index, y=rolling_sharpe, mode='lines', name='Rolling Sharpe', line=dict(color='tomato')))
             fig_roll_s.add_hline(y=1, line_dash="dot")
             fig_roll_s.update_layout(yaxis_title="Sharpe")
             st.plotly_chart(fig_roll_s, width="stretch")
@@ -567,7 +567,7 @@ if st.session_state.results is not None:
                         col_stress3.metric("Alpha (Excess)", f"{total_return - bench_return:.2%}")
                         
                         fig_stress = go.Figure()
-                        fig_stress.add_trace(go.Scatter(x=subset_cum_ret.index, y=subset_cum_ret, mode='lines', name='Portfolio', line=dict(color='red', width=3)))
+                        fig_stress.add_trace(go.Scatter(x=subset_cum_ret.index, y=subset_cum_ret, mode='lines', name='Portfolio', line=dict(color='tomato', width=3)))
                         fig_stress.add_trace(go.Scatter(x=bench_cum_ret.index, y=bench_cum_ret, mode='lines', name='S&P 500', line=dict(color='gray', dash='dot')))
                         fig_stress.update_layout(title=f"Performance during {selected_scenario}", yaxis_title="Growth")
                         st.plotly_chart(fig_stress, width="stretch")
