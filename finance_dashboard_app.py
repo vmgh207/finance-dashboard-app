@@ -681,4 +681,4 @@ elif not run_btn and st.session_state.results is None:
         - Risk metrics assume normal distribution, returns are log-normally distributed  
         - GBM assumes drift rate and volatility is constant. In reality, they are not.
         """)
-        st.info("Please select tickers and click 'Run Analysis'.")
+    st.info("Please select tickers and click 'Run Analysis'.")
