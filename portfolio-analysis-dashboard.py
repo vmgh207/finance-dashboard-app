@@ -190,7 +190,7 @@ if run_btn:
     if not selected_tickers:
         st.warning("Please select at least one ticker.")
     else:
-        with st.spinner('Calculating Mathematical Optimum...'):
+        with st.spinner('Calculating...'):
             stock_data = get_stock_data(selected_tickers, start_date)
             benchmark_data = get_stock_data(['SPY'], start_date)
             
