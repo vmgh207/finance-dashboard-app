@@ -18,7 +18,7 @@ STATIC_TICKERS = [
     'JPM', 'UNH', 'JNJ', 'XOM', 'AVGO', 'HD', 'PG', 'COST', 'ADBE', 'LLY', 
     'CVX', 'MRK', 'ABBV', 'KO', 'PEP', 'BAC', 'WMT', 'TMO', 'CRM', 'MCD', 
     'ACN', 'CSCO', 'NFLX', 'ORCL', 'ABT', 'DIS', 'DHR', 'INTC', 'VZ', 'TXN', 
-    'AMAT', 'PM', 'PFE', 'LOW', 'UNP', 'SPY', 'QQQ', 'VOO', 'IWM', 'DIA', 'GLD'
+    'AMAT', 'PM', 'PFE', 'LOW', 'UNP', 'SPY', 'QQQ', 'VOO', 'IWM', 'DIA', 'GLD','CAT'
 ]
 
 @st.cache_data
@@ -170,7 +170,7 @@ if 'results' not in st.session_state:
 
 selected_tickers = st.sidebar.multiselect(
     "Select Tickers:",
-    default=['GLD','AVGO','GOOGL','CAT','COST','ETN','NFLX','LLY'],
+    default=['GOOGL','BRK-B', 'UNH', 'XOM', 'AVGO', 'LLY', 'KO', 'WMT', 'MCD', 'NFLX','GLD','CAT'],
 )
 
 custom_input = st.sidebar.text_input("Comma separated custom tickers (e.g. MOL.BD, OTP.BD):")
