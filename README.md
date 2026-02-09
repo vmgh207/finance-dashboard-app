@@ -1,5 +1,5 @@
-The app is deployed on Streamlit Cloud. Test it yourself:
-https://vargamarton.streamlit.app/
+<b>The app is deployed on Streamlit Cloud. Test it yourself:
+https://vargamarton.streamlit.app/</b>
 
 This is an interactive Streamlit Dashboard for portfolio optimization and risk analysis using Modern Portfolio Theory.
 
@@ -7,7 +7,7 @@ Key features:
 - Portfolio optimization using SLSQP algo for max Sharpe and min volatility. Monte Carlo simulation
 - Risk metrics: VaR, CVaR, Beta, Sharpe, Sortino, drawdown, skewness, kurtosis, risk budgeting 
 - Stress testing with historical scenario analysis and correlation breakdown
-- Geometrican Brown Motion forecasting
+- Geometric Brown Motion forecasting
 
 Tech stack:
 - Python 3.x
