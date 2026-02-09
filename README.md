@@ -6,7 +6,7 @@ This is an interactive Streamlit Dashboard for portfolio optimization and risk a
 Key features:
 - Portfolio optimization using SLSQP algo for max Sharpe and min volatility. Monte Carlo simulation
 - Risk metrics: VaR, CVaR, Beta, Sharpe, Sortino, drawdown, skewness, kurtosis, risk budgeting 
-- Stress testing with historical scenario analysis and correlation breakdown
+- Stress testing with historical scenario analysis and correlation breakdown. Backtesting
 - Geometric Brown Motion forecasting
 
 Tech stack:
@@ -19,12 +19,13 @@ Tech stack:
 - Plotly for visualization
 
 Technical limitations: this app was made for educational purposes
-- 252 trading days a year is assumed. Crypto and markets with other metrics will be off
-- Daily close prices - no real time data
-- Everything is calculated on historical data
+- 252 trading days a year is assumed. Crypto and markets with other measurements will be off
+- Daily close prices - no real time datastream
+- Everything is calculated on historical data, no black swan events or regime changes are assumed
 - Constant volatility is assumed
 - Log normally distributed returns are assumed
-- No slippage, no transaction costs, no bid-ask spread
+- No slippage, no transaction costs, no bid-ask
+- Exchange rate differencies between currencies aren't calculated
 
 <img width="802" height="600" alt="newplot (2)" src="https://github.com/user-attachments/assets/0dadda86-9e2f-47ce-b557-005d08438d04" />
 <hr>
