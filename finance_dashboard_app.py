@@ -664,7 +664,16 @@ if st.session_state.results is not None:
             st.plotly_chart(fig_risk_pie, width="stretch")
 
 elif not run_btn and st.session_state.results is None:
-    st.info("Please select tickers and click 'Run Analysis'.")
+    st.title("Portfolio Analytics Dashboard")
+    st.markdown(r"""
+    What this app does:  
+    - Optimizes portfolio weights using SLSQP for max Sharpe ratio or min volatility  
+    - Monte Carlo simulation  
+    - Calculates risk metrics: VaR, CVaR, Beta, Alpha, Sharpe, Sortino, drawdown, skewness, kurtosis  
+    - Stresstests portfolio under different historical crisis scenarios
+    - 3 different correlation heatmaps  
+    - Predicts future portfolio paths using Geometric Brownian Motion
+    """)
     st.info(r"""
         **Technical information: built for educational purposes**  
         - Calculations are made assuming there are 252 trading days a year, so crypto and markets with other measurements will be off. Daily close prices are used, not real time data streams.
@@ -672,3 +681,4 @@ elif not run_btn and st.session_state.results is None:
         - Risk metrics assume normal distribution, returns are log-normally distributed  
         - GBM assumes drift rate and volatility is constant. In reality, they are not.
         """)
+        st.info("Please select tickers and click 'Run Analysis'.")
