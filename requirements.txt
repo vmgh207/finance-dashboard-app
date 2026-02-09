@@ -1,7 +1,7 @@
 streamlit
+yfinance
 pandas
 numpy
-matplotlib
-yfinance
-seaborn
-requests
+plotly
+scipy
+statsmodels
