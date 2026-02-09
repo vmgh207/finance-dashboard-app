@@ -4,8 +4,8 @@ https://vargamarton.streamlit.app/
 This is an interactive Streamlit Dashboard for portfolio optimization and risk analysis using Modern Portfolio Theory.
 
 Key features:
-- Portfolio optimization using SLSQP algo for max Sharpe and min volatility. A Monte Carlo simulation was also added.
-- Risk metrics: VaR, CVaR, Beta, Sharpe, Sortino, Drawdown, Skewness, Kurtosis, risk budgeting 
+- Portfolio optimization using SLSQP algo for max Sharpe and min volatility. Monte Carlo simulation
+- Risk metrics: VaR, CVaR, Beta, Sharpe, Sortino, drawdown, skewness, kurtosis, risk budgeting 
 - Stress testing with historical scenario analysis and correlation breakdown
 - Geometrican Brown Motion forecasting
 
@@ -18,4 +18,24 @@ Tech stack:
 - yfinance for market data
 - Plotly for visualization
 
+Technical limitations: this app was made for educational purposes
+- 252 trading days a year is assumed. Crypto and markets with other metrics will be off
+- Daily close prices - no real time data
+- Everything is calculated on historical data
+- Constant volatility is assumed
+- Log normally distributed returns are assumed
+- No slippage, no transaction costs, no bid-ask spread
+
+<img width="802" height="600" alt="newplot (2)" src="https://github.com/user-attachments/assets/0dadda86-9e2f-47ce-b557-005d08438d04" />
+<hr>
+<img width="344" height="224" alt="betareg" src="https://github.com/user-attachments/assets/bbe575f1-9398-431a-9ab3-b85130d5f007" />
+<hr>
+<img width="689" height="369" alt="pred" src="https://github.com/user-attachments/assets/6813ec64-2830-4b7d-81cf-f2aad5b32aa4" />
+<hr>
+<img width="713" height="383" alt="stresst" src="https://github.com/user-attachments/assets/67314798-baf4-47c3-b8d7-e23d8d585503" />
+<hr>
+<img width="648" height="354" alt="corr" src="https://github.com/user-attachments/assets/7b765e93-ca5d-4847-92a8-f13aea701241" />
+<hr>
+<img width="713" height="383" alt="rollingsharpe" src="https://github.com/user-attachments/assets/e14a3998-1c61-4ff4-ad60-804975d3deb1" />
+<hr>
 Varga Márton
