@@ -170,6 +170,7 @@ if 'results' not in st.session_state:
 
 selected_tickers = st.sidebar.multiselect(
     "Select Tickers:",
+    STATIC_TICKERS,
     default=['GOOGL','BRK-B', 'UNH', 'XOM', 'AVGO', 'LLY', 'KO', 'WMT', 'MCD', 'NFLX','GLD','CAT'],
 )
 
