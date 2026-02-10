@@ -117,7 +117,7 @@ def calculate_efficient_frontier(mean_returns, cov_matrix, risk_free_rate, num_p
 
 def run_future_simulation(weights, mean_returns, cov_matrix, years, num_simulations=1000):
     """
-    simulates future portfolio paths using Geometric Brownian Motion
+    simulates future portfolio paths using discrete Geometric Brownian Motion
     S_t = S_0 * exp(((mu- 0,5sigma^2)*t + sigma*W_t)
     (W_t is a Wiener process)
     """
@@ -423,15 +423,6 @@ if st.session_state.results is not None:
         fig_mc.update_layout(title=f"Growth Projection", xaxis_title="Trading Days", yaxis_title="Multiplier")
         st.plotly_chart(fig_mc, width="stretch")
 
-        st.info(r"""
-        Stochastic Differential Equation:
-        
-        $$
-        dS_t = \mu S_t dt + \sigma S_t dW_t
-        $$
-        
-        *Where $dS_t$ is the change in price, $\mu$ is the expected return, $\sigma$ is volatility, and $dW_t$ is random market noise (Wiener-process).*
-        """)
         st.warning(r"""Assumptions which may not hold to reality:  
         - Returns follow log-normal distribution  
         - Volatility remains constant  
