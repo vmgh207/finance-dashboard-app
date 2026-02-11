@@ -47,4 +47,4 @@ Technical limitations: this app was made for educational purposes
 <hr>
 
 
-Varga Márton
+Márton Varga
